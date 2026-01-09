@@ -3,292 +3,279 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حانوت الريحاني  | متجر برعني</title>
+<title>الريحاني مول الحانوت | برعني</title>
 
 <style>
 :root{
-  --main:#ff416c;
-  --blue:#2a5298;
-  --bg:#f4f6f8;
-  --dark:#121212;
+  --primary:#ff9900;
+  --primary-dark:#e88b00;
+  --navy:#131921;
+  --navy-2:#232f3e;
+  --bg:#eaeded;
+  --card:#ffffff;
+  --border:#d5d9d9;
+  --success:#2ecc71;
+  --shadow:0 20px 45px rgba(0,0,0,.12);
 }
 
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+*{box-sizing:border-box;font-family:system-ui}
 
 body{
+  margin:0;
   background:var(--bg);
-  color:#222;
-  transition:.3s;
+  color:#111;
 }
 
-body.dark{
-  background:#0e0e0e;
-  color:#eee;
-}
-
-/* NAVBAR */
-nav{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:linear-gradient(135deg,#2a5298,#1e3c72);
-  padding:1rem 2rem;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* ===== HEADER ===== */
+header{
+  background:var(--navy);
   color:#fff;
+  padding:16px 30px;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:.5px;
 }
 
-nav ul{
-  display:flex;
-  gap:1.5rem;
-  list-style:none;
-}
-
-nav li{cursor:pointer;font-weight:600}
-
-.actions{
-  display:flex;
-  gap:1rem;
-}
-
-.btn{
-  border:none;
-  padding:.6rem 1rem;
-  border-radius:30px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.cart-btn{background:var(--main);color:#fff}
-.mode-btn{background:#fff;color:#333}
-
-/* HERO */
-.hero{
-  min-height:90vh;
-  background:linear-gradient(120deg,#ff416c,#ff4b2b);
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:3rem;
-}
-
-.hero h1{font-size:3rem;margin-bottom:1rem}
-.hero p{max-width:600px;margin:auto;font-size:1.2rem}
-.hero a{
-  display:inline-block;
-  margin-top:2rem;
-  background:#fff;
-  color:#ff416c;
-  padding:1rem 2rem;
-  border-radius:50px;
-  font-weight:bold;
-}
-
-/* PRODUCTS */
-.products{
-  padding:5rem 2rem;
+/* ===== CONTAINER ===== */
+.container{
   max-width:1200px;
   margin:auto;
+  padding:25px;
 }
 
-.products h2{
-  text-align:center;
-  font-size:2.3rem;
-  margin-bottom:3rem;
-  color:var(--blue);
-}
-
+/* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:2rem;
+  grid-template-columns:2fr 1fr;
+  gap:25px;
 }
 
+/* ===== CARD ===== */
 .card{
-  background:#fff;
-  border-radius:20px;
-  padding:1.5rem;
-  box-shadow:0 20px 40px rgba(0,0,0,.1);
-  transition:.3s;
+  background:var(--card);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:var(--shadow);
+  margin-bottom:25px;
 }
 
-body.dark .card{background:#1a1a1a}
+/* ===== TITLES ===== */
+h2,h3{
+  margin:0 0 14px;
+  color:var(--navy-2);
+}
 
-.card:hover{transform:translateY(-8px)}
-
-.card img{
+/* ===== INPUTS ===== */
+input{
   width:100%;
-  border-radius:15px;
-  margin-bottom:1rem;
+  padding:14px;
+  margin-top:10px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  font-size:15px;
 }
 
-.card h3{color:var(--main)}
-.price{font-size:1.4rem;font-weight:bold;margin:.5rem 0}
-
-.card button{
-  width:100%;
-  background:var(--main);
-  color:#fff;
-  border:none;
-  padding:.8rem;
-  border-radius:30px;
-  cursor:pointer;
+input:focus{
+  outline:none;
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(255,153,0,.25);
 }
 
-/* MODAL CART */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.6);
-  display:none;
+/* ===== PAYMENT OPTIONS ===== */
+.payment-option{
+  display:flex;
   align-items:center;
-  justify-content:center;
-}
-
-.modal-content{
-  background:#fff;
-  width:90%;
-  max-width:420px;
-  border-radius:20px;
-  padding:2rem;
-}
-
-body.dark .modal-content{background:#1a1a1a}
-
-.cart-items{margin:1rem 0}
-
-.close{
-  background:#ccc;
-  padding:.5rem 1rem;
-  border-radius:20px;
-  border:none;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  margin-top:12px;
   cursor:pointer;
+  transition:.25s;
+  background:#fafafa;
 }
 
-/* FOOTER */
+.payment-option:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 28px rgba(0,0,0,.1);
+}
+
+.payment-option input{
+  accent-color:var(--primary);
+  transform:scale(1.2);
+}
+
+/* ===== ULTRA BUTTON ===== */
+.ultra-btn{
+  width:100%;
+  padding:16px;
+  margin-top:10px;
+  border:none;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(135deg,var(--primary),#ffb84d);
+  color:#111;
+  box-shadow:0 15px 35px rgba(255,153,0,.45);
+  transition:.25s;
+  position:relative;
+  overflow:hidden;
+}
+
+.ultra-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 20px 45px rgba(255,153,0,.6);
+}
+
+.ultra-btn:active{
+  transform:scale(.98);
+}
+
+/* ===== SUMMARY ===== */
+.summary-item{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
+  font-weight:600;
+}
+
+.total{
+  font-size:18px;
+  color:var(--success);
+  font-weight:900;
+}
+
+/* ===== BADGE ===== */
+.badge{
+  background:var(--navy-2);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:10px;
+  font-size:12px;
+}
+
+/* ===== FOOTER ===== */
 footer{
-  background:#111;
-  color:#aaa;
   text-align:center;
-  padding:2rem;
+  padding:20px;
+  color:#555;
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">🛒 متجري</div>
-  <ul>
-    <li>الرئيسية</li>
-    <li>المنتجات</li>
-    <li>اتصل بنا</li>
-  </ul>
-  <div class="actions">
-    <button class="btn cart-btn" onclick="openCart()">السلة 🛍️</button>
-    <button class="btn mode-btn" onclick="toggleMode()">🌙</button>
-  </div>
-</nav>
+<header>🛒 Ultra Store – Checkout</header>
 
-<section class="hero">
-  <div>
-    <h1>تجربة تسوق احترافية</h1>
-    <p>منتجات إلكترونية مختارة بعناية مع توصيل سريع</p>
-    <a href="#products">تصفح المنتجات</a>
-  </div>
-</section>
+<div class="container">
 
-<section class="products" id="products">
-  <h2>منتجاتنا</h2>
+<div class="grid">
 
-  <div class="grid">
+<!-- LEFT -->
+<div>
 
-    <div class="card">
-      <img src="product1.png" alt="ساعة ذكية">
-      <h3>ساعة ذكية</h3>
-      <p>تصميم أنيق وبطارية قوية</p>
-      <div class="price">299 MAD</div>
-      <button onclick="addToCart('ساعة ذكية - 299 MAD')">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <img src="product2.png" alt="هاتف ذكي">
-      <h3>هاتف ذكي</h3>
-      <p>أداء قوي وكاميرا عالية الجودة</p>
-      <div class="price">499 MAD</div>
-      <button onclick="addToCart('هاتف ذكي - 499 MAD')">أضف للسلة</button>
-    </div>
-
-    <div class="card">
-      <img src="product3.png" alt="تلفاز ذكي">
-      <h3>تلفاز ذكي</h3>
-      <p>شاشة 4K وتجربة سينما</p>
-      <div class="price">1999 MAD</div>
-      <button onclick="addToCart('تلفاز ذكي - 1999 MAD')">أضف للسلة</button>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  © 2026 متجري الإلكتروني – جميع الحقوق محفوظة
-</footer>
-
-<!-- CART MODAL -->
-<div class="modal" id="cart">
-  <div class="modal-content">
-    <h3>🛍️ سلة الشراء</h3>
-    <div class="cart-items" id="cartItems"></div>
-
-    <button class="btn cart-btn" onclick="sendWhatsApp()">
-      تأكيد الطلب عبر واتساب
-    </button>
-    <br><br>
-    <button class="close" onclick="closeCart()">إغلاق</button>
-  </div>
+<div class="card">
+<h3>📦 معلومات الزبون</h3>
+<input id="name" placeholder="الاسم الكامل">
+<input id="phone" placeholder="رقم الهاتف">
+<input id="city" placeholder="المدينة">
+<input id="address" placeholder="العنوان الكامل">
 </div>
 
+<div class="card">
+<h3>💳 طريقة الدفع</h3>
+
+<label class="payment-option">
+<input type="radio" name="pay" value="الدفع عند الاستلام" checked>
+💵 الدفع عند الاستلام
+</label>
+
+<label class="payment-option">
+<input type="radio" name="pay" value="تحويل بنكي">
+🏦 تحويل بنكي
+</label>
+
+<label class="payment-option">
+<input type="radio" name="pay" value="PayPal">
+🟢 PayPal
+</label>
+
+<label class="payment-option">
+<input type="radio" name="pay" value="Stripe">
+💳 بطاقة بنكية (Stripe)
+</label>
+
+<label class="payment-option">
+<input type="radio" name="pay" value="Apple / Google Pay">
+📱 Apple / Google Pay
+</label>
+
+</div>
+
+<button class="ultra-btn" onclick="confirmOrder()">تأكيد الطلب</button>
+
+</div>
+
+<!-- RIGHT -->
+<div class="card">
+<h3>🧾 ملخص الطلب</h3>
+
+<div class="summary-item">
+<span>ساعة ذكية</span>
+<span class="badge">299 MAD</span>
+</div>
+
+<div class="summary-item">
+<span>هاتف ذكي</span>
+<span class="badge">499 MAD</span>
+</div>
+
+<hr>
+
+<div class="summary-item total">
+<span>المجموع</span>
+<span>798 MAD</span>
+</div>
+
+</div>
+
+</div>
+</div>
+
+<footer>
+Ultra Store © 2026 — Premium UI
+</footer>
+
 <script>
-/* ====== CONFIG ====== */
-const WHATSAPP_NUMBER = "212675356099"; // بدّلها بنمرتك بلا +
+const WHATSAPP_NUMBER = "212675356099";
 
-let cart = [];
+function confirmOrder(){
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let city = document.getElementById("city").value;
+  let address = document.getElementById("address").value;
+  let payment = document.querySelector('input[name="pay"]:checked').value;
 
-/* ====== FUNCTIONS ====== */
-function addToCart(item){
-  cart.push(item);
-  alert("تمت إضافة المنتج للسلة");
-}
-
-function openCart(){
-  document.getElementById("cart").style.display="flex";
-  document.getElementById("cartItems").innerHTML =
-    cart.length ? cart.map((i,n)=>`<p>${n+1}- ${i}</p>`).join("") : "السلة فارغة";
-}
-
-function closeCart(){
-  document.getElementById("cart").style.display="none";
-}
-
-function sendWhatsApp(){
-  if(cart.length===0){
-    alert("السلة فارغة");
+  if(!name || !phone || !city || !address){
+    alert("عافاك عمر جميع المعلومات");
     return;
   }
 
-  let message = "🛒 طلب جديد:%0A";
-  cart.forEach((item,i)=>{
-    message += `${i+1}- ${item}%0A`;
-  });
+  let msg = `🛒 طلب جديد%0A
+👤 الاسم: ${name}%0A
+📞 الهاتف: ${phone}%0A
+🏙️ المدينة: ${city}%0A
+📍 العنوان: ${address}%0A
+💳 طريقة الدفع: ${payment}%0A
+-----------------%0A
+📦 المنتجات:%0A
+1- ساعة ذكية (299 MAD)%0A
+2- هاتف ذكي (499 MAD)%0A
+-----------------%0A
+💰 المجموع: 798 MAD`;
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,"_blank");
-}
-
-function toggleMode(){
-  document.body.classList.toggle("dark");
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`,"_blank");
 }
 </script>
 
