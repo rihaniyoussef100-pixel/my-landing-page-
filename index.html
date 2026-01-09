@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Marketplace</title>
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#12172a;
+  --primary:#6c8cff;
+  --secondary:#00ffd5;
+  --text:#ffffff;
+  --muted:#9aa4bf;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+
+body{
+  background:radial-gradient(circle at top, #141a33, var(--bg));
+  color:var(--text);
+}
+
+/* ---------- HEADER ---------- */
+header{
+  padding:24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:var(--secondary);
+}
+
+nav a{
+  color:var(--muted);
+  margin-left:16px;
+  text-decoration:none;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:80px 24px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:42px;
+  margin-bottom:16px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  max-width:520px;
+  margin:auto;
+  color:var(--muted);
+  font-size:18px;
+}
+
+.hero button{
+  margin-top:32px;
+  padding:14px 28px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  color:#000;
+  font-weight:600;
+}
+
+/* ---------- FEATURES ---------- */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:24px;
+  padding:60px 24px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  padding:28px;
+  border:1px solid rgba(255,255,255,0.06);
+}
+
+.icon{
+  width:48px;
+  height:48px;
+  margin-bottom:16px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:15px;
+}
+
+/* ---------- IMAGE SECTION ---------- */
+.showcase{
+  padding:60px 24px;
+  text-align:center;
+}
+
+.mockup{
+  max-width:360px;
+  margin:auto;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  padding:24px;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BestMarket</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>The Future Marketplace</h1>
+  <p>Launch your professional online presence with a modern, fast and secure static website.</p>
+  <button>Get Started</button>
+</section>
+
+<section class="features">
+
+  <div class="card">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#6c8cff" stroke-width="2">
+      <path d="M12 2l9 4-9 4-9-4 9-4z"/>
+      <path d="M3 10l9 4 9-4"/>
+      <path d="M3 18l9 4 9-4"/>
+    </svg>
+    <h3>Fast & Static</h3>
+    <p>No server, no database. Ultra fast loading anywhere.</p>
+  </div>
+
+  <div class="card">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#00ffd5" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 6v6l4 2"/>
+    </svg>
+    <h3>Always Online</h3>
+    <p>Hosted on GitHub Pages – works even if your phone is off.</p>
+  </div>
+
+  <div class="card">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+      <rect x="3" y="3" width="18" height="18" rx="4"/>
+      <path d="M8 12h8"/>
+      <path d="M12 8v8"/>
+    </svg>
+    <h3>Modern Design</h3>
+    <p>2026 UI trends: gradients, glass, minimal & clean.</p>
+  </div>
+
+</section>
+
+<section class="showcase">
+  <h2 style="margin-bottom:20px">Live Preview</h2>
+  <div class="mockup">
+    <img src="data:image/svg+xml;utf8,
+    <svg xmlns='http://www.w3.org/2000/svg' width='400' height='700'>
+      <rect width='100%' height='100%' fill='%230b0f1a'/>
+      <rect x='20' y='40' rx='20' ry='20' width='360' height='620' fill='%2312172a'/>
+      <text x='200' y='120' font-size='28' fill='white' text-anchor='middle'>BestMarket</text>
+      <text x='200' y='180' font-size='16' fill='%239aa4bf' text-anchor='middle'>Mobile Preview</text>
+    </svg>" width="100%">
+  </div>
+</section>
+
+<footer>
+  © 2026 BestMarket – All rights reserved
+</footer>
+
+</body>
+</html>
