@@ -3,135 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>منتجي الاحترافي</title>
+<title>متجري الإلكتروني</title>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{background:#f5f5f5;color:#333;}
+a{text-decoration:none;}
 
-/* Body */
-body {
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: linear-gradient(135deg,#1e3c72,#2a5298);
-  color:#fff;
-}
+/* Navbar */
+nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:#2a5298;color:#fff;position:sticky;top:0;z-index:999;}
+nav .logo{font-size:1.8rem;font-weight:bold;}
+nav ul{display:flex;gap:1rem;list-style:none;}
+nav ul li:hover{text-decoration:underline;cursor:pointer;}
 
-/* Container */
-.container {
-  background: rgba(0,0,0,0.75);
-  padding:2rem;
-  border-radius:25px;
-  text-align:center;
-  width:95%;
-  max-width:500px;
-  box-shadow:0 0 40px rgba(0,0,0,0.6);
-  animation: fadeIn 1.5s ease forwards;
-}
+/* Banner */
+.banner{background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;text-align:center;padding:4rem 2rem;}
+.banner h1{font-size:2.5rem;margin-bottom:1rem;}
+.banner p{font-size:1.2rem;margin-bottom:2rem;}
+.banner a{background:#fff;color:#ff416c;padding:1rem 2rem;border-radius:50px;font-weight:bold;transition:0.3s;}
+.banner a:hover{transform:scale(1.05);}
 
-/* Animations */
-@keyframes fadeIn { from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);} }
-@keyframes glow { 0%{text-shadow:0 0 5px #ff0} 50%{text-shadow:0 0 15px #0ff} 100%{text-shadow:0 0 5px #ff0} }
+/* Products */
+.products{padding:4rem 2rem;background:#fff;}
+.products h2{text-align:center;font-size:2rem;margin-bottom:2rem;color:#2a5298;}
+.product-card{background:#f9f9f9;border-radius:15px;padding:1.5rem;margin-bottom:2rem;box-shadow:0 0 20px rgba(0,0,0,0.1);transition:0.3s;}
+.product-card:hover{transform:scale(1.02);box-shadow:0 0 30px rgba(0,0,0,0.15);}
+.product-card img{width:100%;border-radius:10px;margin-bottom:1rem;}
+.product-card h3{font-size:1.5rem;margin-bottom:0.5rem;color:#ff416c;}
+.product-card p{margin-bottom:0.5rem;line-height:1.4;}
+.product-card .price{font-weight:bold;font-size:1.3rem;margin-bottom:1rem;color:#2a5298;}
+.product-card .buy-btn{display:inline-block;background:#ff416c;color:#fff;padding:0.8rem 1.5rem;border-radius:50px;font-weight:bold;transition:0.3s;}
+.product-card .buy-btn:hover{transform:scale(1.05);box-shadow:0 0 20px #ff4b2b;}
 
-/* Heading */
-h1 {
-  font-size:2.5rem;
-  margin-bottom:1rem;
-  animation: glow 2s ease-in-out infinite alternate;
-}
+/* Testimonials */
+.testimonials{background:#2a5298;color:#fff;padding:4rem 2rem;}
+.testimonials h2{text-align:center;font-size:2rem;margin-bottom:2rem;}
+.testimonial-card{background:rgba(255,255,255,0.1);padding:1.5rem;border-radius:15px;margin-bottom:1.5rem;}
 
-/* Product Image */
-.product-img {
-  width:100%;
-  border-radius:20px;
-  margin-bottom:1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.product-img:hover { transform:scale(1.05); box-shadow:0 0 30px #ff4b2b; }
-
-/* Description */
-p {
-  font-size:1.1rem;
-  margin-bottom:0.8rem;
-  line-height:1.5;
-}
-
-/* Price */
-.price {
-  font-size:2rem;
-  font-weight:bold;
-  margin:1rem 0;
-  color:#ff0;
-  text-shadow:0 0 10px #ff0;
-}
-
-/* Buy Button */
-.buy-btn {
-  display:inline-block;
-  background: linear-gradient(90deg,#ff416c,#ff4b2b);
-  padding:1rem 2rem;
-  border-radius:50px;
-  color:#fff;
-  font-size:1.2rem;
-  text-decoration:none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.buy-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #ff416c;
-}
-
-/* Trust Badges */
-.trust {
-  margin-top:1rem;
-  font-size:0.9rem;
-  color:#ccc;
-}
-.trust p { margin-bottom:0.5rem; }
-
-/* Urgency */
-.urgency {
-  margin-top:1rem;
-  font-size:1rem;
-  color:#ff4b2b;
-  font-weight:bold;
-  animation: pulse 1s infinite;
-}
-@keyframes pulse {
-  0% {opacity:1;}
-  50% {opacity:0.5;}
-  100% {opacity:1;}
-}
+/* FAQ */
+.faq{padding:4rem 2rem;background:#fff;}
+.faq h2{text-align:center;font-size:2rem;margin-bottom:2rem;color:#2a5298;}
+.faq p{margin-bottom:1rem;}
 
 /* Footer */
-footer {
-  margin-top:2rem;
-  font-size:0.8rem;
-  color:#aaa;
-}
+footer{background:#222;color:#ccc;text-align:center;padding:2rem;}
+footer a{color:#ff416c;}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>ساعة ذكية احترافية</h1>
-  <img src="product.png" alt="منتجي" class="product-img">
-  <p>⌚ تصميم عصري وجذاب</p>
-  <p>🔋 بطارية تدوم طويلا</p>
-  <p>💧 مقاومة للماء والغبار</p>
-  <div class="price">299 MAD</div>
-  <a href="https://wa.me/212675356099" class="buy-btn">اطلب الآن عبر واتساب</a>
+<!-- Navbar -->
+<nav>
+  <div class="logo">متجري</div>
+  <ul>
+    <li>الرئيسية</li>
+    <li>المنتجات</li>
+    <li>شهادات</li>
+    <li>أسئلة شائعة</li>
+    <li>اتصل بنا</li>
+  </ul>
+</nav>
 
-  <div class="urgency">🔥 3 أشخاص يشاهدون المنتج الآن!</div>
+<!-- Banner -->
+<section class="banner">
+  <h1>أحدث المنتجات الإلكترونية</h1>
+  <p>أفضل المنتجات بأفضل الأسعار، اطلب الآن واستمتع بالعروض الخاصة!</p>
+  <a href="https://wa.me/2126XXXXXXXX">اطلب عبر واتساب</a>
+</section>
 
-  <div class="trust">
-    <p>✅ توصيل لجميع المدن</p>
-    <p>✅ أداء عند الاستلام</p>
-    <p>✅ ضمان الجودة</p>
+<!-- Products -->
+<section class="products">
+  <h2>منتجاتنا</h2>
+
+  <!-- Product 1 -->
+  <div class="product-card">
+    <img src="/mnt/data/A_digital_photograph_showcases_a_modern_smartwatch.png" alt="ساعة ذكية">
+    <h3>ساعة ذكية</h3>
+    <p>مواصفات رائعة وتصميم عصري.</p>
+    <div class="price">299 MAD</div>
+    <a class="buy-btn" href="https://wa.me/212675356099">اشترِ الآن</a>
   </div>
 
-  <footer>© 2026 متجري. كل الحقوق محفوظة.</footer>
-</div>
+  <!-- Product 2 -->
+  <div class="product-card">
+    <img src="/mnt/data/A_set_of_product_photographs_features_three_electr.png" alt="هاتف ذكي">
+    <h3>هاتف ذكي</h3>
+    <p>شاشة عالية الجودة وتصميم أنيق.</p>
+    <div class="price">499 MAD</div>
+    <a class="buy-btn" href="https://wa.me/212675356099">اشترِ الآن</a>
+  </div>
+
+  <!-- Product 3 -->
+  <div class="product-card">
+    <img src="product3.png" alt="تلفاز ذكي">
+    <h3>تلفاز ذكي</h3>
+    <p>جودة صورة ممتازة وتجربة مشاهدة مذهلة.</p>
+    <div class="price">1999 MAD</div>
+    <a class="buy-btn" href="https://wa.me/2126XXXXXXXX">اشترِ الآن</a>
+  </div>
+
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <h2>ماذا يقول الزبناء؟</h2>
+  <div class="testimonial-card">
+    <p>“خدمة ممتازة والمنتج وصل بسرعة، أنصح الجميع!”</p>
+    <p>- سعيد</p>
+  </div>
+  <div class="testimonial-card">
+    <p>“جودة عالية وسعر ممتاز، تجربة رائعة!”</p>
+    <p>- فاطمة</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2>أسئلة شائعة</h2>
+  <p>كيف يمكنني طلب المنتج؟</p>
+  <p>يمكنك طلب المنتج مباشرة عبر زر واتساب الموجود في كل بطاقة منتج.</p>
+  <p>هل التوصيل متوفر لجميع المدن؟</p>
+  <p>نعم، نوصل لجميع المدن المغربية.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  © 2026 متجري الإلكتروني. جميع الحقوق محفوظة. <br>
+  تابعنا على <a href="#">فيسبوك</a> | <a href="#">إنستغرام</a>
+</footer>
 
 </body>
 </html>
