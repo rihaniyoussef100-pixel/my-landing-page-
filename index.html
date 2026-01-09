@@ -3,75 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجري - المنتج الرائع</title>
+<title>منتجي الاحترافي</title>
 <style>
-/* --------- Reset --------- */
-* { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
 
-/* --------- Body --------- */
+/* Body */
 body {
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
-  color:#fff;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:100vh;
+  background: linear-gradient(135deg,#1e3c72,#2a5298);
+  color:#fff;
 }
 
-/* --------- Container --------- */
+/* Container */
 .container {
-  background: rgba(0,0,0,0.7);
-  padding: 2rem;
-  border-radius: 20px;
+  background: rgba(0,0,0,0.75);
+  padding:2rem;
+  border-radius:25px;
   text-align:center;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.5);
-  animation: fadeIn 2s ease forwards;
+  width:95%;
+  max-width:500px;
+  box-shadow:0 0 40px rgba(0,0,0,0.6);
+  animation: fadeIn 1.5s ease forwards;
 }
 
-/* --------- Animations --------- */
-@keyframes fadeIn {
-  from {opacity:0; transform: translateY(-50px);}
-  to {opacity:1; transform: translateY(0);}
-}
+/* Animations */
+@keyframes fadeIn { from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);} }
+@keyframes glow { 0%{text-shadow:0 0 5px #ff0} 50%{text-shadow:0 0 15px #0ff} 100%{text-shadow:0 0 5px #ff0} }
 
-/* --------- Heading --------- */
+/* Heading */
 h1 {
   font-size:2.5rem;
   margin-bottom:1rem;
-  text-shadow: 0 0 10px #ff0, 0 0 20px #0ff;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-/* --------- Product Image --------- */
+/* Product Image */
 .product-img {
   width:100%;
-  border-radius:15px;
+  border-radius:20px;
   margin-bottom:1rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.product-img:hover { transform: scale(1.05); }
+.product-img:hover { transform:scale(1.05); box-shadow:0 0 30px #ff4b2b; }
 
-/* --------- Description --------- */
+/* Description */
 p {
   font-size:1.1rem;
-  margin-bottom:1rem;
+  margin-bottom:0.8rem;
   line-height:1.5;
 }
 
-/* --------- Price --------- */
+/* Price */
 .price {
   font-size:2rem;
   font-weight:bold;
-  margin-bottom:1.5rem;
+  margin:1rem 0;
   color:#ff0;
-  text-shadow: 0 0 10px #ff0;
+  text-shadow:0 0 10px #ff0;
 }
 
-/* --------- Buy Button --------- */
+/* Buy Button */
 .buy-btn {
   display:inline-block;
-  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  background: linear-gradient(90deg,#ff416c,#ff4b2b);
   padding:1rem 2rem;
   border-radius:50px;
   color:#fff;
@@ -81,26 +78,58 @@ p {
 }
 .buy-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 20px #ff416c;
+  box-shadow: 0 0 25px #ff416c;
 }
 
-/* --------- Footer --------- */
-footer {
-  margin-top:2rem;
+/* Trust Badges */
+.trust {
+  margin-top:1rem;
   font-size:0.9rem;
   color:#ccc;
 }
+.trust p { margin-bottom:0.5rem; }
 
+/* Urgency */
+.urgency {
+  margin-top:1rem;
+  font-size:1rem;
+  color:#ff4b2b;
+  font-weight:bold;
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0% {opacity:1;}
+  50% {opacity:0.5;}
+  100% {opacity:1;}
+}
+
+/* Footer */
+footer {
+  margin-top:2rem;
+  font-size:0.8rem;
+  color:#aaa;
+}
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h1>المنتج الرائع</h1>
+  <h1>ساعة ذكية احترافية</h1>
   <img src="product.png" alt="منتجي" class="product-img">
-  <p>هنا يمكنك كتابة وصف مفصل للمنتج ديالك: المميزات، الفوائد، ولماذا الزبناء غادي يحبوه. خلي الوصف جذاب وقصير!</p>
-  <div class="price">$49.99</div>
-  <a href="#" class="buy-btn">اشتري الآن</a>
+  <p>⌚ تصميم عصري وجذاب</p>
+  <p>🔋 بطارية تدوم طويلا</p>
+  <p>💧 مقاومة للماء والغبار</p>
+  <div class="price">299 MAD</div>
+  <a href="https://wa.me/212675356099" class="buy-btn">اطلب الآن عبر واتساب</a>
+
+  <div class="urgency">🔥 3 أشخاص يشاهدون المنتج الآن!</div>
+
+  <div class="trust">
+    <p>✅ توصيل لجميع المدن</p>
+    <p>✅ أداء عند الاستلام</p>
+    <p>✅ ضمان الجودة</p>
+  </div>
+
   <footer>© 2026 متجري. كل الحقوق محفوظة.</footer>
 </div>
 
