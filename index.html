@@ -1,16 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Free Tools</title>
 
-  <!-- PopAds Verification -->
-  <meta name="popads-verification-3628586" content="dd5b680a50f2cb1654f979a955c69855">
+<!-- PopAds verification (خليه إلا عطاوك واحد آخر بدلو) -->
+<meta name="popads-verification-3628586" value="dd5b680a50f2cb1654f979a955c69855" />
 
-  <title>Rihani Landing Page</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+.card {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background: #0056b3;
+}
+input {
+    padding: 8px;
+    margin: 5px 0;
+    width: 100%;
+}
+.result {
+    margin-top: 10px;
+    font-weight: bold;
+}
+footer {
+    text-align: center;
+    padding: 15px;
+    color: #666;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
-  <h1>Site is working</h1>
-  <p>Verification in progress.</p>
+
+<header>
+    <h1>Smart Free Tools</h1>
+    <p>Free simple tools for everyday use</p>
+</header>
+
+<div class="container">
+
+    <!-- Password Generator -->
+    <div class="card">
+        <h2>Password Generator</h2>
+        <button onclick="generatePassword()">Generate Password</button>
+        <div class="result" id="passwordResult"></div>
+    </div>
+
+    <!-- Age Calculator -->
+    <div class="card">
+        <h2>Age Calculator</h2>
+        <input type="date" id="birthdate">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <div class="result" id="ageResult"></div>
+    </div>
+
+    <!-- BMI Calculator -->
+    <div class="card">
+        <h2>BMI Calculator</h2>
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <input type="number" id="height" placeholder="Height (cm)">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div class="result" id="bmiResult"></div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Smart Free Tools – All tools are free to use.
+</footer>
+
+<!-- PopAds Script (حط الكود لي عطاوك هنا) -->
+<!--
+<script type="text/javascript" src="POPADS_CODE_HERE"></script>
+-->
+
+<script>
+function generatePassword() {
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
+    let pass = "";
+    for (let i = 0; i < 12; i++) {
+        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    document.getElementById("passwordResult").innerText = pass;
+}
+
+function calculateAge() {
+    const birth = new Date(document.getElementById("birthdate").value);
+    if (!birth) return;
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+        age--;
+    }
+    document.getElementById("ageResult").innerText = "Your age: " + age + " years";
+}
+
+function calculateBMI() {
+    const w = document.getElementById("weight").value;
+    const h = document.getElementById("height").value / 100;
+    if (w && h) {
+        const bmi = (w / (h * h)).toFixed(2);
+        document.getElementById("bmiResult").innerText = "Your BMI: " + bmi;
+    }
+}
+</script>
+
 </body>
-</html>
+  </html>
