@@ -1,174 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Dark Tools</title>
+  <meta charset="UTF-8">
+  <title>Smart Tools Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="popads-verification-3628586" value="dd5b680a50f2cb1654f979a955c69855" />
+  <!-- === ADS VERIFICATION (عوض بالكود ديالك) === -->
+  <!-- <meta name="monetag" content="YOUR_CODE_HERE"> -->
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    margin: 0;
-    color: #e5e7eb;
-}
-header {
-    background: linear-gradient(135deg, #020617, #020617);
-    padding: 25px;
-    text-align: center;
-}
-header h1 {
-    margin: 0;
-    color: #38bdf8;
-}
-header p {
-    color: #94a3b8;
-}
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-}
-.card {
-    background: #020617;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(56,189,248,0.08);
-}
-h2 {
-    color: #38bdf8;
-}
-button {
-    background: #38bdf8;
-    color: #020617;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-}
-button:hover {
-    background: #0ea5e9;
-}
-input, select {
-    padding: 10px;
-    margin: 6px 0;
-    width: 100%;
-    border-radius: 6px;
-    border: none;
-    background: #020617;
-    color: #e5e7eb;
-    border: 1px solid #1e293b;
-}
-.result {
-    margin-top: 12px;
-    font-size: 16px;
-    color: #22c55e;
-}
-footer {
-    text-align: center;
-    padding: 15px;
-    color: #64748b;
-    font-size: 14px;
-}
-.flex {
-    display: flex;
-    gap: 10px;
-}
-</style>
+  <style>
+    :root {
+      --bg: #0f0f14;
+      --card: #161622;
+      --accent: #8b5cf6;
+      --text: #ffffff;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #6d28d9, #8b5cf6);
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(139,92,246,0.2);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .btn {
+      margin-top: 15px;
+      display: inline-block;
+      padding: 10px 15px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: #1f1f2e;
+      border: 1px solid var(--accent);
+    }
+
+    .navigation {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* === TOOL MODAL === */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal-content {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      margin-top: 0;
+    }
+
+    .close {
+      margin-top: 20px;
+    }
+
+    /* === FAKE AD OVERLAY === */
+    .ad {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      color: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .ad-box {
+      padding: 30px;
+      background: #111;
+      border-radius: 12px;
+    }
+
+    .ad-box p {
+      margin-bottom: 20px;
+      color: #ccc;
+    }
+  </style>
 </head>
-
 <body>
 
-<header>
-    <h1>Smart Dark Tools</h1>
-    <p>Useful free tools — fast & simple</p>
-</header>
+<header>Smart Tools Hub</header>
 
 <div class="container">
+  <div id="page-title"><h2>Page 1</h2></div>
 
-    <!-- Password Generator -->
-    <div class="card">
-        <h2>🔐 Password Generator</h2>
-        <button onclick="generatePassword()">Generate Password</button>
-        <div class="result" id="passwordResult"></div>
-    </div>
+  <div class="grid" id="tools"></div>
 
-    <!-- Age Calculator FIXED -->
-    <div class="card">
-        <h2>🎂 Age Calculator (Easy)</h2>
-        <div class="flex">
-            <input type="number" id="day" placeholder="Day (DD)">
-            <input type="number" id="month" placeholder="Month (MM)">
-            <input type="number" id="year" placeholder="Year (YYYY)">
-        </div>
-        <button onclick="calculateAge()">Calculate Age</button>
-        <div class="result" id="ageResult"></div>
-    </div>
-
-    <!-- BMI Calculator -->
-    <div class="card">
-        <h2>⚖️ BMI Calculator</h2>
-        <input type="number" id="weight" placeholder="Weight (kg)">
-        <input type="number" id="height" placeholder="Height (cm)">
-        <button onclick="calculateBMI()">Calculate BMI</button>
-        <div class="result" id="bmiResult"></div>
-    </div>
-
+  <div class="navigation">
+    <button class="btn secondary" onclick="prevPage()">⬅ Back</button>
+    <button class="btn" onclick="nextPage()">Next ➜</button>
+  </div>
 </div>
 
-<footer>
-    © 2026 Smart Dark Tools – All tools are free.
-</footer>
+<!-- TOOL MODAL -->
+<div class="modal" id="toolModal">
+  <div class="modal-content">
+    <h2 id="toolTitle">Tool</h2>
+    <p id="toolContent">Tool content here...</p>
+    <button class="btn close" onclick="closeTool()">Close</button>
+  </div>
+</div>
 
-<!-- PopAds script هنا -->
-<!--
-<script type="text/javascript" src="POPADS_CODE_HERE"></script>
--->
+<!-- AD OVERLAY -->
+<div class="ad" id="ad">
+  <div class="ad-box">
+    <h2>Advertisement</h2>
+    <p>Your ad is loading...</p>
+    <button class="btn" onclick="closeAd()">Continue</button>
+  </div>
+</div>
 
 <script>
-function generatePassword() {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%";
-    let pass = "";
-    for (let i = 0; i < 12; i++) {
-        pass += chars.charAt(Math.floor(Math.random() * chars.length));
+  const toolsData = [
+    "Age Calculator",
+    "Password Checker",
+    "Random Quote",
+    "BMI Calculator",
+    "Daily Motivation",
+    "Text Cleaner",
+    "Fake Name Generator",
+    "Zodiac Info",
+    "Random Facts",
+    "Simple Timer",
+    "Color Picker",
+    "Word Counter",
+    "Image Compressor",
+    "Note Pad",
+    "Quick Calculator"
+  ];
+
+  let currentPage = 1;
+  const toolsPerPage = 5;
+
+  function renderPage() {
+    const start = (currentPage - 1) * toolsPerPage;
+    const end = start + toolsPerPage;
+    const pageTools = toolsData.slice(start, end);
+
+    document.getElementById("page-title").innerHTML = `<h2>Page ${currentPage}</h2>`;
+    const container = document.getElementById("tools");
+    container.innerHTML = "";
+
+    pageTools.forEach(tool => {
+      container.innerHTML += `
+        <div class="card">
+          <h3>${tool}</h3>
+          <p>Smart utility tool</p>
+          <div class="btn" onclick="openTool('${tool}')">Open Tool</div>
+        </div>
+      `;
+    });
+  }
+
+  function showAd(callback) {
+    const ad = document.getElementById("ad");
+    ad.style.display = "flex";
+    ad.callback = callback;
+  }
+
+  function closeAd() {
+    const ad = document.getElementById("ad");
+    ad.style.display = "none";
+    if (ad.callback) ad.callback();
+  }
+
+  function openTool(name) {
+    showAd(() => {
+      document.getElementById("toolTitle").innerText = name;
+      document.getElementById("toolContent").innerText =
+        "This is a smart tool demo. You can extend it anytime.";
+      document.getElementById("toolModal").style.display = "flex";
+    });
+  }
+
+  function closeTool() {
+    document.getElementById("toolModal").style.display = "none";
+  }
+
+  function nextPage() {
+    if ((currentPage * toolsPerPage) < toolsData.length) {
+      showAd(() => {
+        currentPage++;
+        renderPage();
+      });
     }
-    document.getElementById("passwordResult").innerText = pass;
-}
+  }
 
-function calculateAge() {
-    const d = parseInt(document.getElementById("day").value);
-    const m = parseInt(document.getElementById("month").value) - 1;
-    const y = parseInt(document.getElementById("year").value);
-
-    if (!d || !m || !y) {
-        document.getElementById("ageResult").innerText = "Please enter valid date.";
-        return;
+  function prevPage() {
+    if (currentPage > 1) {
+      showAd(() => {
+        currentPage--;
+        renderPage();
+      });
     }
+  }
 
-    const birth = new Date(y, m, d);
-    const today = new Date();
-
-    let age = today.getFullYear() - birth.getFullYear();
-    const diff = today.getMonth() - birth.getMonth();
-    if (diff < 0 || (diff === 0 && today.getDate() < birth.getDate())) {
-        age--;
-    }
-
-    document.getElementById("ageResult").innerText = "Your age: " + age + " years";
-}
-
-function calculateBMI() {
-    const w = document.getElementById("weight").value;
-    const h = document.getElementById("height").value / 100;
-    if (w && h) {
-        const bmi = (w / (h * h)).toFixed(2);
-        document.getElementById("bmiResult").innerText = "Your BMI: " + bmi;
-    }
-}
+  renderPage();
 </script>
 
 </body>
