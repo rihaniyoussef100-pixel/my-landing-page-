@@ -3,23 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Free Tools</title>
+<title>Smart Dark Tools</title>
 
-<!-- PopAds verification (خليه إلا عطاوك واحد آخر بدلو) -->
 <meta name="popads-verification-3628586" value="dd5b680a50f2cb1654f979a955c69855" />
 
 <style>
 body {
     font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    background: #0f172a;
     margin: 0;
-    padding: 0;
+    color: #e5e7eb;
 }
 header {
-    background: #111;
-    color: #fff;
-    padding: 20px;
+    background: linear-gradient(135deg, #020617, #020617);
+    padding: 25px;
     text-align: center;
+}
+header h1 {
+    margin: 0;
+    color: #38bdf8;
+}
+header p {
+    color: #94a3b8;
 }
 .container {
     max-width: 900px;
@@ -27,37 +32,51 @@ header {
     padding: 20px;
 }
 .card {
-    background: #fff;
+    background: #020617;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(56,189,248,0.08);
+}
+h2 {
+    color: #38bdf8;
 }
 button {
-    background: #007bff;
-    color: #fff;
+    background: #38bdf8;
+    color: #020617;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 10px 16px;
+    border-radius: 8px;
     cursor: pointer;
+    font-weight: bold;
 }
 button:hover {
-    background: #0056b3;
+    background: #0ea5e9;
 }
-input {
-    padding: 8px;
-    margin: 5px 0;
+input, select {
+    padding: 10px;
+    margin: 6px 0;
     width: 100%;
+    border-radius: 6px;
+    border: none;
+    background: #020617;
+    color: #e5e7eb;
+    border: 1px solid #1e293b;
 }
 .result {
-    margin-top: 10px;
-    font-weight: bold;
+    margin-top: 12px;
+    font-size: 16px;
+    color: #22c55e;
 }
 footer {
     text-align: center;
     padding: 15px;
-    color: #666;
+    color: #64748b;
     font-size: 14px;
+}
+.flex {
+    display: flex;
+    gap: 10px;
 }
 </style>
 </head>
@@ -65,30 +84,34 @@ footer {
 <body>
 
 <header>
-    <h1>Smart Free Tools</h1>
-    <p>Free simple tools for everyday use</p>
+    <h1>Smart Dark Tools</h1>
+    <p>Useful free tools — fast & simple</p>
 </header>
 
 <div class="container">
 
     <!-- Password Generator -->
     <div class="card">
-        <h2>Password Generator</h2>
+        <h2>🔐 Password Generator</h2>
         <button onclick="generatePassword()">Generate Password</button>
         <div class="result" id="passwordResult"></div>
     </div>
 
-    <!-- Age Calculator -->
+    <!-- Age Calculator FIXED -->
     <div class="card">
-        <h2>Age Calculator</h2>
-        <input type="date" id="birthdate">
+        <h2>🎂 Age Calculator (Easy)</h2>
+        <div class="flex">
+            <input type="number" id="day" placeholder="Day (DD)">
+            <input type="number" id="month" placeholder="Month (MM)">
+            <input type="number" id="year" placeholder="Year (YYYY)">
+        </div>
         <button onclick="calculateAge()">Calculate Age</button>
         <div class="result" id="ageResult"></div>
     </div>
 
     <!-- BMI Calculator -->
     <div class="card">
-        <h2>BMI Calculator</h2>
+        <h2>⚖️ BMI Calculator</h2>
         <input type="number" id="weight" placeholder="Weight (kg)">
         <input type="number" id="height" placeholder="Height (cm)">
         <button onclick="calculateBMI()">Calculate BMI</button>
@@ -98,10 +121,10 @@ footer {
 </div>
 
 <footer>
-    © 2026 Smart Free Tools – All tools are free to use.
+    © 2026 Smart Dark Tools – All tools are free.
 </footer>
 
-<!-- PopAds Script (حط الكود لي عطاوك هنا) -->
+<!-- PopAds script هنا -->
 <!--
 <script type="text/javascript" src="POPADS_CODE_HERE"></script>
 -->
@@ -117,14 +140,24 @@ function generatePassword() {
 }
 
 function calculateAge() {
-    const birth = new Date(document.getElementById("birthdate").value);
-    if (!birth) return;
+    const d = parseInt(document.getElementById("day").value);
+    const m = parseInt(document.getElementById("month").value) - 1;
+    const y = parseInt(document.getElementById("year").value);
+
+    if (!d || !m || !y) {
+        document.getElementById("ageResult").innerText = "Please enter valid date.";
+        return;
+    }
+
+    const birth = new Date(y, m, d);
     const today = new Date();
+
     let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+    const diff = today.getMonth() - birth.getMonth();
+    if (diff < 0 || (diff === 0 && today.getDate() < birth.getDate())) {
         age--;
     }
+
     document.getElementById("ageResult").innerText = "Your age: " + age + " years";
 }
 
@@ -139,4 +172,4 @@ function calculateBMI() {
 </script>
 
 </body>
-  </html>
+    </html>
