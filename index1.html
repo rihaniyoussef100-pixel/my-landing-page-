@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Universal Tools Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- MONETAG / ADS VERIFICATION (بدل الكود ديالك هنا إذا بغيت) -->
+<meta name="monetag" content="YOUR_CODE_HERE">
+
+<style>
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+
+/* ===== BODY ===== */
+body{
+  background:radial-gradient(circle at top,#0a1f1a,#050b0f);
+  color:#e0f2f1;
+  overflow-x:hidden;
+}
+
+/* ===== STAR BACKGROUND ===== */
+canvas{
+  position:fixed;
+  top:0;left:0;
+  z-index:-1;
+}
+
+/* ===== HEADER ===== */
+header{
+  text-align:center;
+  padding:40px 15px;
+}
+header h1{
+  font-size:2.3em;
+  color:#00e5ff;
+}
+header p{
+  opacity:.8;
+}
+
+/* ===== SECTIONS ===== */
+section{
+  max-width:1100px;
+  margin:40px auto;
+  padding:20px;
+}
+section h2{
+  margin-bottom:15px;
+  color:#00ff9c;
+}
+
+/* ===== GRID ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+}
+
+/* ===== CARDS ===== */
+.card{
+  background:rgba(0,40,40,.55);
+  padding:18px;
+  border-radius:14px;
+  text-align:center;
+  cursor:pointer;
+  transition:.25s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  background:rgba(0,80,80,.7);
+}
+.card span{
+  display:block;
+  font-size:1.8em;
+}
+.card small{
+  opacity:.8;
+}
+
+/* ===== WIDGETS ===== */
+.widget{
+  background:rgba(0,30,30,.6);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+  text-align:center;
+}
+
+/* ===== INPUT ===== */
+input,select,button{
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  outline:none;
+  margin:5px;
+}
+button{
+  background:#00ff9c;
+  cursor:pointer;
+}
+button:hover{opacity:.8}
+
+/* ===== FOOTER ===== */
+footer{
+  text-align:center;
+  padding:30px;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<header>
+  <h1>🌌 Universal Tools Hub</h1>
+  <p>Everything people search for — in one calm place</p>
+</header>
+
+<!-- TIME / DATE -->
+<section>
+  <div class="widget">
+    <h2>🕒 Time & Date</h2>
+    <div id="time" style="font-size:2em"></div>
+    <div id="date"></div>
+  </div>
+</section>
+
+<!-- SEARCH & SOCIAL -->
+<section>
+<h2>🔍 Search & Social</h2>
+<div class="grid">
+  <div class="card" onclick="go('https://www.google.com')"><span>🌐</span><small>Google</small></div>
+  <div class="card" onclick="go('https://www.youtube.com')"><span>🔴</span><small>YouTube</small></div>
+  <div class="card" onclick="go('https://www.facebook.com')"><span>🔵</span><small>Facebook</small></div>
+  <div class="card" onclick="go('https://www.instagram.com')"><span>🟣</span><small>Instagram</small></div>
+  <div class="card" onclick="go('https://www.tiktok.com')"><span>⚫</span><small>TikTok</small></div>
+</div>
+</section>
+
+<!-- LIFE TOOLS -->
+<section>
+<h2>🧠 Life Tools</h2>
+<div class="grid">
+  <div class="card" onclick="calcAge()"><span>🎂</span><small>Age</small></div>
+  <div class="card" onclick="calculator()"><span>🧮</span><small>Calculator</small></div>
+  <div class="card" onclick="motivation()"><span>🔥</span><small>Motivation</small></div>
+  <div class="card" onclick="facts()"><span>🧠</span><small>Facts</small></div>
+  <div class="card" onclick="weather()"><span>🌦</span><small>Weather</small></div>
+</div>
+</section>
+
+<!-- AI / SMART -->
+<section>
+<h2>🤖 Smart / AI</h2>
+<div class="grid">
+  <div class="card"><span>🧠</span><small>AI Search</small></div>
+  <div class="card"><span>✍️</span><small>AI Text</small></div>
+  <div class="card"><span>🌍</span><small>Translate</small></div>
+  <div class="card"><span>📄</span><small>PDF Tools</small></div>
+  <div class="card"><span>📥</span><small>Download</small></div>
+</div>
+</section>
+
+<footer>
+  © 2026 Universal Tools Hub — Calm • Useful • Powerful
+</footer>
+
+<script>
+/* ===== TIME ===== */
+setInterval(()=>{
+  let d=new Date();
+  document.getElementById("time").innerText=d.toLocaleTimeString();
+  document.getElementById("date").innerText=d.toDateString();
+},1000);
+
+/* ===== ACTIONS ===== */
+function go(url){
+  alert("Ad → then redirect (ready for ads)");
+  window.open(url,"_blank");
+}
+function calcAge(){alert("Age calculator (scroll version ready)");}
+function calculator(){alert("Calculator ready");}
+function motivation(){alert("You are stronger than yesterday 💪");}
+function facts(){alert("Fact: People love simple useful tools");}
+function weather(){alert("Weather tool ready");}
+
+/* ===== STARS ===== */
+const c=document.getElementById("stars"),ctx=c.getContext("2d");
+c.width=innerWidth;c.height=innerHeight;
+let stars=[...Array(120)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,s:Math.random()*2}));
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  ctx.fillStyle="#fff";
+  stars.forEach(st=>{
+    ctx.beginPath();
+    ctx.arc(st.x,st.y,st.s,0,Math.PI*2);
+    ctx.fill();
+    st.y+=0.15;
+    if(st.y>c.height)st.y=0;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+  </html>
