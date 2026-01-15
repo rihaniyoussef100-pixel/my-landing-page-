@@ -1,272 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Smart Tools Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Aura Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- === ADS VERIFICATION (عوض بالكود ديالك) === -->
-  <!-- <meta name="monetag" content="YOUR_CODE_HERE"> -->
+<!-- حط كود الإعلانات هنا لاحقاً -->
+<!-- <script src="AD_SCRIPT.js"></script> -->
 
-  <style>
-    :root {
-      --bg: #0f0f14;
-      --card: #161622;
-      --accent: #8b5cf6;
-      --text: #ffffff;
-      --muted: #9ca3af;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#0b3d2e,#041a2e);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#eaffff
+}
+.box{
+  width:95%;
+  max-width:520px;
+  background:rgba(0,0,0,.45);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 0 45px rgba(0,255,180,.25);
+  text-align:center
+}
+h1{color:#00ffd0;margin-bottom:10px}
+p{color:#bdf7ff;font-size:.9em;margin-bottom:20px}
 
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+.tool{
+  background:rgba(0,255,200,.12);
+  padding:15px;
+  border-radius:14px;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition:.2s
+}
+.tool:hover{background:rgba(0,255,200,.2)}
 
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
+.timer{
+  margin:15px 0;
+  font-size:1.2em;
+  color:#00ffd5
+}
 
-    header {
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      background: linear-gradient(90deg, #6d28d9, #8b5cf6);
-    }
+button{
+  background:#00ffd5;
+  border:none;
+  padding:12px 20px;
+  border-radius:25px;
+  cursor:pointer;
+  font-weight:bold
+}
 
-    .container {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+.hidden{display:none}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 20px rgba(139,92,246,0.2);
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card h3 {
-      margin-top: 0;
-      font-size: 18px;
-    }
-
-    .card p {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .btn {
-      margin-top: 15px;
-      display: inline-block;
-      padding: 10px 15px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .btn.secondary {
-      background: #1f1f2e;
-      border: 1px solid var(--accent);
-    }
-
-    .navigation {
-      margin-top: 30px;
-      display: flex;
-      justify-content: space-between;
-    }
-
-    /* === TOOL MODAL === */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 999;
-    }
-
-    .modal-content {
-      background: var(--card);
-      padding: 30px;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 500px;
-      text-align: center;
-    }
-
-    .modal-content h2 {
-      margin-top: 0;
-    }
-
-    .close {
-      margin-top: 20px;
-    }
-
-    /* === FAKE AD OVERLAY === */
-    .ad {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      color: #fff;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      text-align: center;
-    }
-
-    .ad-box {
-      padding: 30px;
-      background: #111;
-      border-radius: 12px;
-    }
-
-    .ad-box p {
-      margin-bottom: 20px;
-      color: #ccc;
-    }
-  </style>
+.ad{
+  margin-top:20px;
+  padding:15px;
+  border-radius:14px;
+  background:rgba(255,255,255,.1);
+  font-size:.85em
+}
+footer{
+  margin-top:20px;
+  font-size:.75em;
+  color:#9edfd7
+}
+</style>
 </head>
+
 <body>
 
-<header>Smart Tools Hub</header>
+<div class="box">
+<h1>🌿 Aura Tools</h1>
+<p>Quick smart tools. Limited access. Stay focused.</p>
 
-<div class="container">
-  <div id="page-title"><h2>Page 1</h2></div>
-
-  <div class="grid" id="tools"></div>
-
-  <div class="navigation">
-    <button class="btn secondary" onclick="prevPage()">⬅ Back</button>
-    <button class="btn" onclick="nextPage()">Next ➜</button>
-  </div>
+<!-- TOOLS -->
+<div id="tools">
+  <div class="tool" onclick="openTool()">📅 Date Calculator</div>
+  <div class="tool" onclick="openTool()">🔢 Number Analyzer</div>
+  <div class="tool" onclick="openTool()">🧠 Focus Timer</div>
+  <div class="tool" onclick="openTool()">🔐 Password Check</div>
+  <div class="tool" onclick="openTool()">📄 Text Cleaner</div>
 </div>
 
-<!-- TOOL MODAL -->
-<div class="modal" id="toolModal">
-  <div class="modal-content">
-    <h2 id="toolTitle">Tool</h2>
-    <p id="toolContent">Tool content here...</p>
-    <button class="btn close" onclick="closeTool()">Close</button>
-  </div>
+<!-- TOOL AREA -->
+<div id="toolArea" class="hidden">
+  <h3>⏳ Tool Running</h3>
+  <div class="timer" id="time">60</div>
+  <p>You have limited time to use this tool.</p>
 </div>
 
-<!-- AD OVERLAY -->
-<div class="ad" id="ad">
-  <div class="ad-box">
-    <h2>Advertisement</h2>
-    <p>Your ad is loading...</p>
-    <button class="btn" onclick="closeAd()">Continue</button>
-  </div>
+<!-- AD AREA -->
+<div id="adArea" class="hidden ad">
+  <p>📢 Time is over</p>
+  <p>Watch ad to continue</p>
+  <button onclick="continueTool()">Continue</button>
+</div>
+
+<footer>© 2026 Aura Tools</footer>
 </div>
 
 <script>
-  const toolsData = [
-    "Age Calculator",
-    "Password Checker",
-    "Random Quote",
-    "BMI Calculator",
-    "Daily Motivation",
-    "Text Cleaner",
-    "Fake Name Generator",
-    "Zodiac Info",
-    "Random Facts",
-    "Simple Timer",
-    "Color Picker",
-    "Word Counter",
-    "Image Compressor",
-    "Note Pad",
-    "Quick Calculator"
-  ];
+let seconds = 60;
+let interval;
 
-  let currentPage = 1;
-  const toolsPerPage = 5;
+// فتح الأداة
+function openTool(){
+  document.getElementById("tools").classList.add("hidden");
+  document.getElementById("toolArea").classList.remove("hidden");
+  startTimer();
+}
 
-  function renderPage() {
-    const start = (currentPage - 1) * toolsPerPage;
-    const end = start + toolsPerPage;
-    const pageTools = toolsData.slice(start, end);
-
-    document.getElementById("page-title").innerHTML = `<h2>Page ${currentPage}</h2>`;
-    const container = document.getElementById("tools");
-    container.innerHTML = "";
-
-    pageTools.forEach(tool => {
-      container.innerHTML += `
-        <div class="card">
-          <h3>${tool}</h3>
-          <p>Smart utility tool</p>
-          <div class="btn" onclick="openTool('${tool}')">Open Tool</div>
-        </div>
-      `;
-    });
-  }
-
-  function showAd(callback) {
-    const ad = document.getElementById("ad");
-    ad.style.display = "flex";
-    ad.callback = callback;
-  }
-
-  function closeAd() {
-    const ad = document.getElementById("ad");
-    ad.style.display = "none";
-    if (ad.callback) ad.callback();
-  }
-
-  function openTool(name) {
-    showAd(() => {
-      document.getElementById("toolTitle").innerText = name;
-      document.getElementById("toolContent").innerText =
-        "This is a smart tool demo. You can extend it anytime.";
-      document.getElementById("toolModal").style.display = "flex";
-    });
-  }
-
-  function closeTool() {
-    document.getElementById("toolModal").style.display = "none";
-  }
-
-  function nextPage() {
-    if ((currentPage * toolsPerPage) < toolsData.length) {
-      showAd(() => {
-        currentPage++;
-        renderPage();
-      });
+// التايمر
+function startTimer(){
+  seconds = 30;
+  document.getElementById("time").innerText = seconds;
+  interval = setInterval(()=>{
+    seconds--;
+    document.getElementById("time").innerText = seconds;
+    if(seconds <= 0){
+      clearInterval(interval);
+      showAd();
     }
-  }
+  },1000);
+}
 
-  function prevPage() {
-    if (currentPage > 1) {
-      showAd(() => {
-        currentPage--;
-        renderPage();
-      });
-    }
-  }
+// إظهار الإعلان
+function showAd(){
+  document.getElementById("toolArea").classList.add("hidden");
+  document.getElementById("adArea").classList.remove("hidden");
 
-  renderPage();
+  // هنا مستقبلاً تحط كود الإشهار الحقيقي
+  // showInterstitialAd();
+}
+
+// الاستمرار بعد الإعلان
+function continueTool(){
+  document.getElementById("adArea").classList.add("hidden");
+  document.getElementById("toolArea").classList.remove("hidden");
+  startTimer();
+}
 </script>
 
 </body>
-    </html>
+</html>
