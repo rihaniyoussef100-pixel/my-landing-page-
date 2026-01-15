@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Life Tools – Aura Edition</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin:0;
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(circle at top, #0b3d2e, #020c1b);
+  color:#eafff5;
+  overflow-x:hidden;
+}
+
+/* stars */
+canvas {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+h1 {
+  text-align:center;
+  color:#00ffcc;
+  margin:20px 0 5px;
+}
+p.sub {
+  text-align:center;
+  opacity:.8;
+  margin-bottom:20px;
+}
+
+.section {
+  padding:15px;
+}
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap:15px;
+}
+.card {
+  background: rgba(0,40,35,.6);
+  border-radius:15px;
+  padding:20px;
+  text-align:center;
+  cursor:pointer;
+  transition:.3s;
+  box-shadow:0 0 15px rgba(0,255,200,.1);
+}
+.card:hover {
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(0,255,200,.4);
+}
+
+.card span {
+  font-size:30px;
+}
+.card h3 {
+  margin:10px 0 0;
+  font-size:15px;
+}
+
+.widget {
+  display:none;
+  padding:20px;
+}
+
+input,button {
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+}
+button {
+  background:#00ffcc;
+  color:#003;
+  cursor:pointer;
+}
+.result {
+  margin-top:10px;
+  font-weight:bold;
+  color:#00ffcc;
+}
+
+/* aura message */
+#aura {
+  margin:15px;
+  padding:15px;
+  background:rgba(0,255,200,.08);
+  border-radius:15px;
+  text-align:center;
+  font-style:italic;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="stars"></canvas>
+
+<h1>🧠 Life Tools</h1>
+<p class="sub">Aura Edition ✨ Calm • Smart • Useful</p>
+
+<div id="aura"></div>
+
+<div class="section">
+<div class="grid">
+
+<div class="card" onclick="openTool('age')"><span>🎂</span><h3>Age</h3></div>
+<div class="card" onclick="openTool('calc')"><span>🧮</span><h3>Calculator</h3></div>
+<div class="card" onclick="searchSmart()"><span>🌐</span><h3>Smart Search</h3></div>
+<div class="card" onclick="go('https://chat.openai.com')"><span>🧠</span><h3>AI Chat</h3></div>
+<div class="card" onclick="go('https://translate.google.com')"><span>🌍</span><h3>Translate</h3></div>
+<div class="card" onclick="go('https://www.google.com/search?q=weather')"><span>🌦</span><h3>Weather</h3></div>
+<div class="card" onclick="go('https://www.youtube.com')"><span>🔴</span><h3>YouTube</h3></div>
+<div class="card" onclick="go('https://www.facebook.com')"><span>🔵</span><h3>Facebook</h3></div>
+<div class="card" onclick="go('https://www.tiktok.com')"><span>⚫</span><h3>TikTok</h3></div>
+
+</div>
+</div>
+
+<!-- AGE -->
+<div id="age" class="widget">
+<h2>🎂 Age Calculator</h2>
+<input type="date" id="birth">
+<button onclick="calcAge()">Calculate</button>
+<div class="result" id="ageR"></div>
+</div>
+
+<!-- CALC -->
+<div id="calc" class="widget">
+<h2>🧮 Calculator</h2>
+<input id="expr" placeholder="5*8+10">
+<button onclick="doCalc()">=</button>
+<div class="result" id="calcR"></div>
+</div>
+
+<audio id="clickSound">
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_8d8b2c98b2.mp3">
+</audio>
+
+<script>
+/* tools */
+function openTool(id){
+ document.querySelectorAll('.widget').forEach(w=>w.style.display="none");
+ document.getElementById(id).style.display="block";
+ play();
+}
+
+function go(url){
+ play();
+ window.open(url,"_blank");
+}
+
+function play(){
+ document.getElementById("clickSound").play();
+}
+
+/* age */
+function calcAge(){
+ let b=new Date(birth.value);
+ let y=new Date().getFullYear()-b.getFullYear();
+ ageR.innerText="Your age: "+y+" years";
+}
+
+/* calc */
+function doCalc(){
+ try{ calcR.innerText=eval(expr.value); }
+ catch{ calcR.innerText="Error"; }
+}
+
+/* smart search */
+function searchSmart(){
+ let q=prompt("Search anything:");
+ if(!q) return;
+ q=q.toLowerCase();
+ if(q.includes("weather")) go("https://google.com/search?q=weather");
+ else if(q.includes("youtube")) go("https://youtube.com/results?search_query="+q);
+ else go("https://google.com/search?q="+q);
+}
+
+/* aura message */
+const aura=[
+"Today is perfect to start something new.",
+"Your energy attracts opportunities.",
+"Calm mind = strong decisions.",
+"Something good is coming, stay ready.",
+"Your focus today is your superpower."
+];
+document.getElementById("aura").innerText=
+"🔮 "+aura[new Date().getDate()%aura.length];
+
+/* stars */
+const c=document.getElementById("stars"),ctx=c.getContext("2d");
+let w,h,stars=[];
+function resize(){
+ w=c.width=innerWidth;
+ h=c.height=innerHeight;
+ stars=Array.from({length:120},()=>({
+ x:Math.random()*w,
+ y:Math.random()*h,
+ r:Math.random()*2
+ }));
+}
+window.onresize=resize;resize();
+function draw(){
+ ctx.clearRect(0,0,w,h);
+ ctx.fillStyle="#00ffcc";
+ stars.forEach(s=>{
+  ctx.globalAlpha=Math.random();
+  ctx.beginPath();
+  ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+  ctx.fill();
+ });
+ requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+  </html>
