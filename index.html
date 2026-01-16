@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aura Tools – All in One Free Tools</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Aura Tools is a free all-in-one toolbox offering weather, calculator, age calculator, motivation, facts, AI tools and more. Everything works inside the website.">
+
+<style>
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:radial-gradient(circle at top,#0f2a2d,#050b0d);
+color:#dfeeee;
+}
+
+header{
+text-align:center;
+padding:30px 20px;
+}
+
+header h1{
+color:#00ff9c;
+margin-bottom:10px;
+}
+
+header p{
+max-width:700px;
+margin:auto;
+opacity:.9;
+}
+
+section{
+padding:25px 15px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+color:#00ff9c;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+padding:15px;
+box-shadow:0 0 20px rgba(0,255,156,.08);
+}
+
+button{
+background:#00ff9c;
+border:none;
+padding:10px 15px;
+border-radius:10px;
+cursor:pointer;
+font-weight:bold;
+margin-top:10px;
+}
+
+input{
+width:100%;
+padding:10px;
+border-radius:10px;
+border:none;
+margin-top:8px;
+}
+
+footer{
+margin-top:40px;
+padding:25px;
+text-align:center;
+font-size:14px;
+background:rgba(0,0,0,.3);
+}
+
+footer a{
+color:#00ff9c;
+text-decoration:none;
+margin:0 5px;
+}
+
+small{opacity:.7}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🧠 Aura Tools</h1>
+<p>
+Aura Tools is a modern digital toolbox that provides useful daily services
+such as weather forecast, calculator, age calculator, motivation, random facts
+and smart tools. Everything works directly inside the website with no redirects.
+</p>
+</header>
+
+<section>
+<h2>📌 What is Aura Tools?</h2>
+<p>
+Aura Tools is a free all-in-one platform designed to help users with simple
+daily needs. Whether you want to calculate your age, check the weather,
+get inspired, discover random facts or use smart tools, everything is available
+in one place with a clean and relaxing interface.
+</p>
+</section>
+
+<section>
+<h2>🧰 Life Tools</h2>
+<div class="grid">
+
+<div class="card">
+<h3>🎂 Age Calculator</h3>
+<input type="date" id="birth">
+<button onclick="calcAge()">Calculate</button>
+<p id="ageResult"></p>
+</div>
+
+<div class="card">
+<h3>🧮 Calculator</h3>
+<input type="text" id="calc" placeholder="e.g 5*7+2">
+<button onclick="calc()">Result</button>
+<p id="calcResult"></p>
+</div>
+
+<div class="card">
+<h3>🌦 Weather</h3>
+<input type="text" id="city" placeholder="City name">
+<button onclick="weather()">Get Weather</button>
+<p id="weatherResult">Demo mode</p>
+</div>
+
+<div class="card">
+<h3>🕒 Time & Date</h3>
+<button onclick="time()">Show</button>
+<p id="timeResult"></p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>🤖 Smart / AI</h2>
+<div class="grid">
+
+<div class="card">
+<h3>🔥 Motivation</h3>
+<button onclick="motivation()">Inspire me</button>
+<p id="moti"></p>
+</div>
+
+<div class="card">
+<h3>🧠 Random Fact</h3>
+<button onclick="fact()">Random Fact</button>
+<p id="fact"></p>
+</div>
+
+<div class="card">
+<h3>🌍 Translate</h3>
+<p>Integrated external translation services supported.</p>
+</div>
+
+<div class="card">
+<h3>📄 PDF Tools</h3>
+<p>Simple PDF utilities coming soon.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>🔐 Privacy Policy</h2>
+<p>
+Aura Tools respects your privacy. We do not collect personal information.
+Some third-party services such as advertising networks may use cookies.
+By using this website, you agree to this policy.
+</p>
+</section>
+
+<section>
+<h2>📜 Terms of Service</h2>
+<p>
+Aura Tools is provided as-is without warranties. We are not responsible
+for misuse of the tools or incorrect results. By using the website,
+you accept these terms.
+</p>
+</section>
+
+<footer>
+<p>
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms of Service</a>
+</p>
+<small>© 2026 Aura Tools – All rights reserved</small>
+</footer>
+
+<script>
+function calcAge(){
+let b=document.getElementById("birth").value;
+if(!b)return;
+let d=new Date(b);
+let a=new Date().getFullYear()-d.getFullYear();
+document.getElementById("ageResult").innerText="Your age is "+a+" years";
+}
+
+function calc(){
+try{
+document.getElementById("calcResult").innerText=eval(document.getElementById("calc").value);
+}catch{
+document.getElementById("calcResult").innerText="Invalid expression";
+}
+}
+
+function time(){
+document.getElementById("timeResult").innerText=new Date().toLocaleString();
+}
+
+function motivation(){
+let arr=[
+"Small steps lead to big results.",
+"Believe in yourself.",
+"Consistency beats motivation."
+];
+document.getElementById("moti").innerText=arr[Math.floor(Math.random()*arr.length)];
+}
+
+function fact(){
+let arr=[
+"Honey never spoils.",
+"Octopuses have three hearts.",
+"The brain uses 20% of the body's energy."
+];
+document.getElementById("fact").innerText=arr[Math.floor(Math.random()*arr.length)];
+}
+
+function weather(){
+document.getElementById("weatherResult").innerText="Weather service active";
+}
+</script>
+
+</body>
+  </html>
